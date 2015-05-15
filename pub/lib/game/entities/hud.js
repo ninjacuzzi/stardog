@@ -16,7 +16,7 @@ ig.module(
 		health: 50,
 
 		speed: 100,
-		dog: new ig.Image( 'media/dog.jpg' ),
+		dog: new ig.Image('media/dog.jpg'),
 
 	    // Load an animation sheet
 
