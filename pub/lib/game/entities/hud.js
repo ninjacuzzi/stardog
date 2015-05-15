@@ -6,7 +6,7 @@ ig.module(
 	)
 .defines(function(){
 
-	EntityHUD = ig.Entity.extend({
+	EntityHud = ig.Entity.extend({
 
 		collides: ig.Entity.COLLIDES.PASSIVE,
 		type: ig.Entity.TYPE.A,
