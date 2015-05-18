@@ -7,19 +7,17 @@ ig.module(
 	'impact.image',
 	'game.levels.2',
 	'game.entities.player',
-	'game.entities.hud'
+	'game.entities.hud.hud'
 )
 .defines(function(){
 
 MyGame = ig.Game.extend({
 	
-	// Load a font
 	font: new ig.Font( 'media/04b03.font.png' ),
 	
 	heart: new ig.Image( 'media/heart_16.png' ),
 
 	init: function() {
-		// Initialize your game here; bind keys etc.
 		this.socket = new io();
 		this.socket.connect();
 
@@ -43,7 +41,8 @@ MyGame = ig.Game.extend({
 		this.loadLevel(Level2);
 
 		ig.game.spawnEntity('EntityPlayer', 0, 0, {});
-		ig.game.spawnEntity('EntityHUD', 10, 180, {});
+		
+		this.hud = ig.game.spawnEntity('EntityHud', 10, 180, {});
 
 	},
 	
@@ -58,7 +57,7 @@ MyGame = ig.Game.extend({
 			this.screen.y = player.pos.y - ig.system.height/2;
 
 			if(player.vel.x!=0 || player.vel.y!=0)
-				this.socket.emit('position', {nickname:this.nickname, x:player.pos.x, y:player.pos.y});
+				;//this.socket.emit('position', {nickname:this.nickname, x:player.pos.x, y:player.pos.y});
 		}
 
 
@@ -76,8 +75,9 @@ MyGame = ig.Game.extend({
 		this.heart.draw( 30, 10 );
 		this.heart.draw( 50, 10 );
 
-
+		this.hud.draw(true);
 	}
+
 });
 
 
